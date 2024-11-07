@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expedientes Médicos</title>
+    <style>
+        /* Estilos generales */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Contenedor de los expedientes */
+        .records-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #fff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px;
+        }
+
+        .record {
+            padding: 20px;
+            border-bottom: 1px solid #e0e0e0;
+        }
+
+        .record:last-child {
+            border-bottom: none;
+        }
+
+        .record h3 {
+            margin-top: 0;
+            color: #007bff;
+        }
+
+        .record p {
+            margin: 5px 0;
+            color: #555;
+        }
+
+        /* Botón */
+        .record-button {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .record-button:hover {
+            background-color: #0056b3;
+        }
+
+        /* Responsividad */
+        @media (max-width: 600px) {
+            .records-container {
+                padding: 20px;
+            }
+
+            .record h3 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="records-container">
+        <h2>Expedientes Médicos</h2>
+        <div id="records-list">
+            <!-- Los expedientes médicos se insertarán aquí -->
+        </div>
+    </div>
+
+    <script>
+        const medicalRecords = [
+            {
+                patientName: "Carlos Gómez",
+                patientID: "123456",
+                dateOfBirth: "1985-05-15",
+                diagnosis: "Hipertensión",
+                treatments: ["Medicamentos antihipertensivos", "Dieta baja en sodio"],
+                medications: ["Losartán", "Hidroclorotiazida"]
+            },
+            {
+                patientName: "Laura Martínez",
+                patientID: "654321",
+                dateOfBirth: "1990-09-22",
+                diagnosis: "Diabetes Tipo 2",
+                treatments: ["Ejercicio regular", "Dieta controlada"],
+                medications: ["Metformina"]
+            }
+        ];
+
+        function displayMedicalRecords() {
+            const recordsList = document.getElementById('records-list');
+            medicalRecords.forEach(record => {
+                recordsList.innerHTML += `
+                    <div class="record">
+                        <h3>${record.patientName}</h3>
+                        <p><strong>ID del Paciente:</strong> ${record.patientID}</p>
+                        <p><strong>Fecha de Nacimiento:</strong> ${record.dateOfBirth}</p>
+                        <p><strong>Diagnóstico:</strong> ${record.diagnosis}</p>
+                        <p><strong>Tratamientos:</strong> ${record.treatments.join(', ')}</p>
+                        <p><strong>Medicamentos:</strong> ${record.medications.join(', ')}</p>
+                        <a href="#" class="record-button">Ver más detalles</a>
+                    </div>
+                `;
+            });
+        }
+
+        // Cargar los expedientes médicos al cargar la página
+        window.onload = displayMedicalRecords;
+    </script>
+</body>
+</html>
